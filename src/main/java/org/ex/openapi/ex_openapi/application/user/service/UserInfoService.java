@@ -1,5 +1,6 @@
 package org.ex.openapi.ex_openapi.application.user.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.ex.openapi.ex_openapi.application.common.entity.ResEntity;
 import org.ex.openapi.ex_openapi.application.user.dto.UserEntity;
 import org.ex.openapi.ex_openapi.application.user.entity.req.GetUserInfoReqEntity;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * The type UserInfoService
  */
+@Slf4j
 @Service
 public class UserInfoService {
 
@@ -20,7 +22,6 @@ public class UserInfoService {
     public UserInfoService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
 
     public GetUserInfoResEntity getUserInfo(GetUserInfoReqEntity reqEntity) {
 

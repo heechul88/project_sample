@@ -12,14 +12,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
 
 @Tag(name = "UserInfoController", description = "User Info Service")
-@Controller
-@ResponseBody
+@RestController
 @RequestMapping("1.0/userInfo")
 public class UserInfoController {
 
@@ -33,15 +31,14 @@ public class UserInfoController {
 
     @Operation(summary = "회원정보 조회", description = "100:성공 200:실패")
 //    @ApiDocumentResponse
-    @ResponseBody
     @GetMapping(value = "getUserInfo", produces = {MediaType.APPLICATION_JSON_VALUE})
     public GetUserInfoResEntity getUserInfo(@ParameterObject @ModelAttribute GetUserInfoReqEntity reqEntity)throws Exception {
+        logger.info("");
         return userInfoService.getUserInfo(reqEntity);
     }
 
     @Operation(summary = "회원정보 가입", description = "100:성공, 200:실패")
 //    @ApiDocumentResponse
-    @ResponseBody
     @PostMapping(value = "save", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResEntity save(@ParameterObject @ModelAttribute PostUserInfoReqEntity reqEntity)throws Exception {
         return userInfoService.save(reqEntity);
@@ -49,7 +46,6 @@ public class UserInfoController {
 
     @Operation(summary = "회원정보 수정 ", description = "100:성공, 200:실패")
 //    @ApiDocumentResponse
-    @ResponseBody
     @PutMapping(value = "update", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResEntity updateMember(@ParameterObject @ModelAttribute PutUserInfoReqEntity reqEntity) {
         return userInfoService.update(reqEntity);

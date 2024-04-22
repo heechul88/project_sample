@@ -18,6 +18,19 @@ configurations {
     }
 }
 
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'local' : profile
+
+sourceSets {
+    main {
+        resources {
+            srcDir "src/main/resources-${profile}"
+            srcDir "src/main/java"
+            exclude "**/*.java"
+        }
+    }
+}
+
+
 repositories {
     mavenCentral()
 }
@@ -28,6 +41,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.4.0'
+
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
