@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ExOpenApiApplication {
-// TEST
-//    TEST
-//
+
     public static void main(String[] args) {
         SpringApplication.run(ExOpenApiApplication.class, args);
     }
